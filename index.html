@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Playground - Let's AJAX!</title>
+    <title>Playground - Let's plug in 🔌</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
@@ -13,17 +13,41 @@
     <div class="container text-center mt-5">
       <h1> Let's plug in 🔌</h1>
 
-      <div class="my-5">
-        <button href="#" class="btn btn-primary">Click me!</button>
+      <div data-controller="disable-button" class="my-5">
+        <button 
+          data-action="click->disable-button#disable" 
+          data-disable-button-target="clickme" 
+          href="#" 
+          class="btn btn-primary">Click me!</button>
+        <a 
+          data-action="click->disable-button#enable" 
+          data-disable-button-target="reset" 
+          href="#" 
+          class="btn btn-outline-primary d-none">Reset</a>
       </div>
 
-      <form id="search-movies" class="form-inline d-flex justify-content-center m-5">
-        <input id="keyword" type="text" class="form-control" placeholder="Find movies">
-        <input id="submit" type="submit" class="btn btn-primary form-control" value="Search">
-      </form>
-
-      <ul class="list-inline mt-5" id="results">
-      </ul>
+      <div data-controller="movies">
+        <form id="search-movies" class="form-inline d-flex justify-content-center m-5">
+          <input 
+            data-movies-target="input" 
+            id="keyword" 
+            type="text" 
+            class="form-control" placeholder="Find movies">
+          <input 
+            data-action="click->movies#searchMovies" 
+            id="submit" 
+            type="submit" 
+            class="btn btn-primary form-control" 
+            value="Search">
+        </form>
+  
+        <ul 
+          data-controller="sortable" 
+          data-movies-target="results" 
+          class="list-inline mt-5" 
+          id="results">
+        </ul>
+      </div>
     </div>
 
     <!-- At the end, the script -->
